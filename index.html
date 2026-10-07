@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Автопортрет — Уап Аружан, 7 «Е»</title>
+<meta name="description" content="Презентация «Автопортрет»: Уап Аружан, 7 «Е» класс.">
+<meta property="og:title" content="Автопортрет — Уап Аружан, 7 «Е»">
+<meta property="og:description" content="Творческий проект: мой автопортрет, как я его рисовала и чему научилась.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700&family=Caveat:wght@500&display=swap">
+<style>
+:root{
+  --cream:#F6F1E8; --beige:#ECE5D8; --navy:#1E2C52; --ink:#18181C; --body:#3A3A42;
+  --muted:#75695A; --sand:#B9AE9C; --paper:#FBF9F4;
+  --ease:cubic-bezier(.22,1,.36,1); --glide:cubic-bezier(.65,0,.35,1);
+  --bg:var(--cream);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-variant-numeric:lining-nums;background:var(--bg);transition:background-color 1.2s var(--glide);font-family:'Manrope',Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;overflow:hidden;background:var(--bg);transition:background-color 1.2s var(--glide)}
+.abs{position:absolute}
+
+/* фон-круг и рисунок живут поверх всех слайдов и плавно «перетекают» */
+#orb{position:absolute;transition:left 1.6s var(--glide),top 1.6s var(--glide),width 1.6s var(--glide),height 1.6s var(--glide)}
+#orb i{position:absolute;inset:0;border-radius:50%;transition:background-color 1.2s var(--glide);animation:float 9s ease-in-out infinite alternate}
+@keyframes float{from{transform:translate(-14px,10px) scale(1)}to{transform:translate(14px,-12px) scale(1.03)}}
+#portrait{position:absolute;z-index:3;pointer-events:none;object-fit:cover;border:10px solid var(--paper);border-radius:6px;box-shadow:0 30px 60px rgba(20,30,60,.25);
+  transition:left 1.4s var(--glide),top 1.4s var(--glide),width 1.4s var(--glide),height 1.4s var(--glide),transform 1.4s var(--glide),opacity .9s var(--ease)}
+
+/* слайды */
+.slide{position:absolute;inset:0;z-index:2;visibility:hidden;pointer-events:none;transition:visibility 0s .5s}
+.slide.on{visibility:visible;pointer-events:auto;transition:none}
+.a{opacity:0;transform:translateY(34px);filter:blur(8px);transition:opacity .45s ease,transform .45s ease,filter .45s ease}
+.a.l{transform:translateX(-44px)}
+.a.s{transform:scale(.94)}
+.on .a{opacity:1;transform:none;filter:none;transition:opacity 1.1s var(--ease),transform 1.4s var(--ease),filter 1.1s var(--ease);transition-delay:calc(.45s + var(--i,0) * .16s)}
+.bar{transform-origin:left;transform:scaleX(0);transition:transform .4s ease}
+.on .bar{transform:scaleX(1);transition:transform 1.2s var(--ease) calc(.45s + var(--i,0) * .16s)}
+.vline{transform-origin:top;transform:scaleY(0);transition:transform .4s ease}
+.on .vline{transform:scaleY(1);transition:transform 2.2s var(--ease) .7s}
+
+.eyebrow{font-size:24px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--navy)}
+.h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:96px;font-weight:600;line-height:1.05;letter-spacing:-1px}
+.hand{font-family:'Caveat','Brush Script MT',cursive}
+.label{font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--paper);border:1px solid #DDD4C4;border-radius:20px;padding:40px;box-shadow:0 16px 40px rgba(30,44,82,.08)}
+.year{font-family:'Cormorant Garamond',Georgia,serif;font-size:88px;font-weight:600;line-height:1;color:var(--navy)}
+.card h3{font-size:32px;font-weight:700;line-height:1.2;margin:12px 0}
+.card .t{font-size:26px;font-style:italic;line-height:1.35;color:var(--muted);margin-bottom:12px}
+.card .f{font-size:26px;line-height:1.4;color:var(--body)}
+.row{display:flex;gap:24px;align-items:baseline;border-top:1px solid #CFC5B3;padding-top:28px}
+.row .label{width:260px;flex:none}
+.row .v{font-size:34px;font-weight:600;line-height:1.3}
+.step{display:flex;gap:32px;align-items:center;width:1060px}
+.num{flex:none;width:72px;height:72px;border-radius:50%;background:var(--navy);color:var(--cream);display:flex;align-items:center;justify-content:center;font:700 30px/1 'Manrope',Arial,sans-serif}
+.step h3{font-size:32px;font-weight:700;line-height:1.2}
+.step p{font-size:26px;line-height:1.35;color:var(--body);margin-top:4px}
+.dark{color:var(--cream)}
+.dark .eyebrow{color:var(--sand)}
+.point{font-size:30px;line-height:1.4;color:#D9D2C4;border-left:4px solid var(--sand);padding:4px 0 4px 28px;width:1080px}
+.point b{color:var(--cream)}
+.hard{display:flex;gap:48px;align-items:center;width:1664px;border-top:1px solid #CFC5B3;padding-top:32px}
+.hard .n{width:150px;flex:none;font:600 96px/1 'Cormorant Garamond',Georgia,serif;color:var(--navy)}
+.hard h3{width:420px;flex:none;font-size:36px;font-weight:700;line-height:1.2}
+.hard p{flex:1;font-size:30px;line-height:1.4;color:var(--body)}
+.learn{display:flex;gap:32px;align-items:flex-start;width:816px}
+.ico{flex:none;width:80px;height:80px;border-radius:20px;background:var(--navy);display:flex;align-items:center;justify-content:center}
+.ico svg{width:44px;height:44px;fill:none;stroke:var(--cream);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.learn h3{font-size:34px;font-weight:700;line-height:1.2}
+.learn p{font-size:28px;line-height:1.4;color:var(--body);margin-top:8px}
+
+/* нижняя строка: подпись, номер, полоса прогресса */
+.foot{position:absolute;z-index:4;bottom:64px;font-size:24px;transition:opacity .8s var(--ease),color 1.2s var(--glide)}
+#footL{left:128px;color:var(--muted)}
+#footR{right:128px;font-weight:600;color:var(--navy);font-variant-numeric:tabular-nums}
+.stage.isdark #footL{color:var(--sand)}
+.stage.isdark #footR{color:var(--cream)}
+.stage.nofoot .foot{opacity:0}
+#prog{position:absolute;z-index:4;left:0;bottom:0;height:6px;background:var(--navy);transition:width 1.4s var(--glide),background-color 1.2s var(--glide)}
+.stage.isdark #prog{background:var(--sand)}
+#hint{color:var(--muted);font-size:24px}
+#hint span{display:inline-block;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(10px)}}
+#fs{position:fixed;z-index:9;right:14px;top:14px;width:44px;height:44px;border:none;border-radius:12px;background:rgba(30,44,82,.12);color:var(--navy);cursor:pointer;opacity:.55;transition:opacity .3s}
+#fs:hover{opacity:1}
+#fs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01s!important;transition-delay:0s!important;animation:none!important}}
+</style>
+</head>
+<body>
+<button id="fs" type="button" aria-label="Во весь экран"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+<div class="stage" id="stage">
+  <div id="orb"><i></i></div>
+
+  <!-- 1. Титул -->
+  <section class="slide" aria-label="Титульный слайд">
+    <div class="abs a s" style="--i:0;left:1232px;top:148px;width:546px;height:786px;background:var(--navy);border-radius:6px"></div>
+    <p class="abs a eyebrow" style="--i:1;left:128px;top:236px;width:960px">Творческий проект</p>
+    <h1 class="abs a" style="--i:2;left:120px;top:276px;width:1040px;font:600 184px/1 'Cormorant Garamond',Georgia,serif;letter-spacing:-2px">Автопортрет</h1>
+    <p class="abs a hand" style="--i:3;left:128px;top:480px;width:960px;font-size:64px;line-height:1.1;color:var(--navy)">взгляд на себя со стороны</p>
+    <div class="abs bar" style="--i:4;left:128px;top:604px;width:120px;height:6px;background:var(--navy);border-radius:3px"></div>
+    <div class="abs a" style="--i:5;left:128px;top:654px;width:960px;display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:baseline">
+      <p class="label">Автор</p><p style="font-size:36px;font-weight:600">Уап Аружан</p>
+      <p class="label">Класс</p><p style="font-size:36px;font-weight:600">7 «Е»</p>
+      <p class="label">Дата</p><p style="font-size:36px;font-weight:600">6 октября 2026</p>
+    </div>
+    <p id="hint" class="abs a" style="--i:8;left:128px;top:968px;width:900px">Листайте стрелками или касанием <span>→</span></p>
+  </section>
+
+  <!-- 2. Что такое автопортрет -->
+  <section class="slide" aria-label="Что такое автопортрет">
+    <p class="abs a eyebrow" style="--i:0;left:128px;top:128px;width:1000px">Знакомство</p>
+    <h2 class="abs a h2" style="--i:1;left:124px;top:168px;width:1400px">Что такое автопортрет</h2>
+    <p class="abs a" style="--i:2;left:128px;top:312px;width:1300px;font-size:32px;line-height:1.45;color:var(--body)"><b style="color:var(--navy)">Автопортрет</b> — это портрет художника, созданный им самим. Чтобы изобразить себя, художник смотрит в зеркало или на фотографию и показывает не только внешность, но и характер.</p>
+    <div class="abs a card" style="--i:3;left:128px;top:500px;width:528px"><p class="year">1500</p><h3>Альбрехт Дюрер</h3><p class="t">«Автопортрет в одежде, отороченной мехом»</p><p class="f">Изобразил себя строго анфас — смело для своего времени.</p></div>
+    <div class="abs a card" style="--i:4;left:696px;top:500px;width:528px"><p class="year">1889</p><h3>Винсент ван Гог</h3><p class="t">«Автопортрет с перевязанным ухом»</p><p class="f">Писал себя очень часто — у него больше 35 автопортретов.</p></div>
+    <div class="abs a card" style="--i:5;left:1264px;top:500px;width:528px"><p class="year">1940</p><h3>Фрида Кало</h3><p class="t">«Автопортрет с терновым ожерельем и колибри»</p><p class="f">Через автопортреты рассказывала о своих чувствах и жизни.</p></div>
+  </section>
+
+  <!-- 3. Мой автопортрет -->
+  <section class="slide" aria-label="Мой автопортрет">
+    <p class="abs a eyebrow" style="--i:0;left:800px;top:128px;width:992px">Моя работа</p>
+    <h2 class="abs a h2" style="--i:1;left:796px;top:168px;width:992px">Мой автопортрет</h2>
+    <div class="abs a row" style="--i:2;left:800px;top:350px;width:992px"><p class="label">Автор</p><p class="v">Уап Аружан</p></div>
+    <div class="abs a row" style="--i:3;left:800px;top:476px;width:992px"><p class="label">Техника</p><p class="v">Рисунок карандашом</p></div>
+    <div class="abs a row" style="--i:4;left:800px;top:602px;width:992px"><p class="label">Материалы</p><p class="v">Простой и цветные карандаши, бумага</p></div>
+    <div class="abs a row" style="--i:5;left:800px;top:728px;width:992px;border-bottom:1px solid #CFC5B3;padding-bottom:28px"><p class="label">Год</p><p class="v">2026</p></div>
+  </section>
+
+  <!-- 4. Как я рисовала -->
+  <section class="slide" aria-label="Как я рисовала">
+    <p class="abs a eyebrow" style="--i:0;left:128px;top:128px;width:1000px">Процесс</p>
+    <h2 class="abs a h2" style="--i:1;left:124px;top:168px;width:1040px">Как я рисовала</h2>
+    <div class="abs vline" style="left:163px;top:346px;width:2px;height:480px;background:var(--sand)"></div>
+    <div class="abs a l step" style="--i:2;left:128px;top:310px"><div class="num">1</div><div><h3>Набросок</h3><p>Лёгкими линиями наметила овал лица, шею и плечи</p></div></div>
+    <div class="abs a l step" style="--i:3;left:128px;top:430px"><div class="num">2</div><div><h3>Пропорции</h3><p>Провела центральную линию и разметила глаза, нос и губы</p></div></div>
+    <div class="abs a l step" style="--i:4;left:128px;top:550px"><div class="num">3</div><div><h3>Черты лица</h3><p>Прорисовала глаза, брови, нос, губы и уши</p></div></div>
+    <div class="abs a l step" style="--i:5;left:128px;top:670px"><div class="num">4</div><div><h3>Волосы и одежда</h3><p>Штрихами нарисовала волосы, рубашку и галстук</p></div></div>
+    <div class="abs a l step" style="--i:6;left:128px;top:790px"><div class="num">5</div><div><h3>Цвет</h3><p>Цветными карандашами раскрасила кожу и галстук</p></div></div>
+  </section>
+
+  <!-- 5. Идея -->
+  <section class="slide dark" aria-label="Что я хотела передать">
+    <p class="abs a eyebrow" style="--i:0;left:128px;top:128px;width:1000px">Идея</p>
+    <h2 class="abs a h2" style="--i:1;left:124px;top:168px;width:1100px">Что я хотела передать</h2>
+    <p class="abs a" style="--i:2;left:128px;top:330px;width:1080px;font:italic 500 56px/1.2 'Cormorant Garamond',Georgia,serif">«Я хотела показать себя такой, какая я есть каждый день: спокойной, собранной и открытой»</p>
+    <p class="abs a point" style="--i:4;left:128px;top:620px"><b>Прямой взгляд</b> — честность и открытость</p>
+    <p class="abs a point" style="--i:5;left:128px;top:710px"><b>Школьная форма</b> — моя жизнь сейчас: учёба и школа</p>
+    <p class="abs a point" style="--i:6;left:128px;top:800px"><b>Яркий галстук</b> — единственный цветной акцент</p>
+  </section>
+
+  <!-- 6. Трудности -->
+  <section class="slide" aria-label="Что было самым сложным">
+    <p class="abs a eyebrow" style="--i:0;left:128px;top:128px;width:1000px">Трудности</p>
+    <h2 class="abs a h2" style="--i:1;left:124px;top:168px;width:1400px">Что было самым сложным</h2>
+    <div class="abs a l hard" style="--i:2;left:128px;top:340px"><p class="n">01</p><h3>Пропорции лица</h3><p>Правильно расположить глаза, нос и губы, чтобы лицо было похоже на моё.</p></div>
+    <div class="abs a l hard" style="--i:3;left:128px;top:530px"><p class="n">02</p><h3>Глаза и взгляд</h3><p>Нарисовать оба глаза одинаковыми и добиться прямого, живого взгляда.</p></div>
+    <div class="abs a l hard" style="--i:4;left:128px;top:720px;border-bottom:1px solid #CFC5B3;padding-bottom:32px"><p class="n">03</p><h3>Волосы</h3><p>Штрихами передать длинные прямые волосы так, чтобы они не выглядели плоскими.</p></div>
+  </section>
+
+  <!-- 7. Чему я научилась -->
+  <section class="slide" aria-label="Чему я научилась">
+    <p class="abs a eyebrow" style="--i:0;left:128px;top:128px;width:1000px">Результат</p>
+    <h2 class="abs a h2" style="--i:1;left:124px;top:168px;width:1400px">Чему я научилась</h2>
+    <div class="abs a s card learn" style="--i:2;left:128px;top:330px"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><div><h3>Наблюдать</h3><p>Внимательно смотреть на себя и замечать мелкие детали.</p></div></div>
+    <div class="abs a s card learn" style="--i:3;left:976px;top:330px"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg></div><div><h3>Строить лицо</h3><p>Размечать пропорции: центр лица, линию глаз, нос и губы.</p></div></div>
+    <div class="abs a s card learn" style="--i:4;left:128px;top:590px"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20l4-1L19 8l-3-3L5 16z"/><path d="M14 7l3 3"/></svg></div><div><h3>Штриховать</h3><p>Передавать карандашом волосы, объём и тени.</p></div></div>
+    <div class="abs a s card learn" style="--i:5;left:976px;top:590px"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18c1.1 0 1.6-.9 1.2-1.8-.5-1.1.2-2.2 1.4-2.2H17a4 4 0 004-4c0-5.5-4-10-9-10z"/><circle cx="7.5" cy="11" r=".8"/><circle cx="10" cy="7" r=".8"/><circle cx="15" cy="7.5" r=".8"/></svg></div><div><h3>Работать с цветом</h3><p>Выделять главное цветом, а остальное оставлять сдержанным.</p></div></div>
+  </section>
+
+  <!-- 8. Спасибо -->
+  <section class="slide dark" aria-label="Итог и спасибо">
+    <p class="abs a eyebrow" style="--i:0;left:128px;top:190px;width:1000px">Итог</p>
+    <p class="abs a" style="--i:1;left:128px;top:240px;width:1060px;font-size:34px;line-height:1.45;color:#D9D2C4">Работа над автопортретом помогла мне лучше узнать себя и понять, что в рисунке главное — внимательность и терпение.</p>
+    <h1 class="abs a" style="--i:3;left:120px;top:470px;width:1100px;font:600 150px/1 'Cormorant Garamond',Georgia,serif;letter-spacing:-2px">Спасибо за внимание!</h1>
+    <p class="abs a hand" style="--i:5;left:128px;top:810px;width:1000px;font-size:60px;line-height:1.1;color:var(--sand)">Уап Аружан, 7 «Е»</p>
+  </section>
+
+  <img id="portrait" src="portrait.jpg" alt="Автопортрет Аружан: рисунок карандашом — девушка с длинными тёмными волосами в белой рубашке и зелёно-жёлтом полосатом галстуке">
+  <p class="foot" id="footL">Автопортрет · Уап Аружан</p>
+  <p class="foot" id="footR"></p>
+  <div id="prog"></div>
+</div>
+
+<script>
+// Для каждого слайда: цвет фона, круг [left, top, size, цвет], рисунок [left, top, w, h, поворот, виден]
+const S = [
+  {bg:'#F6F1E8', orb:[900,70,940,'#ECE4D5'],   pic:[1196,120,546,786,-2,1]},
+  {bg:'#F6F1E8', orb:[1320,40,520,'#ECE4D5'],  pic:[128,128,542,780,0,0]},
+  {bg:'#F6F1E8', orb:[40,300,720,'#ECE4D5'],   pic:[128,128,542,780,0,1]},
+  {bg:'#ECE5D8', orb:[1120,60,780,'#E1D8C7'],  pic:[1250,128,542,780,0,1]},
+  {bg:'#1E2C52', orb:[40,400,640,'#26375F'],   pic:[1310,150,482,694,2,1]},
+  {bg:'#ECE5D8', orb:[1240,40,600,'#E1D8C7'],  pic:[1310,150,482,694,2,0]},
+  {bg:'#F6F1E8', orb:[60,520,520,'#ECE4D5'],   pic:[1330,250,380,547,3,0]},
+  {bg:'#1E2C52', orb:[1100,140,800,'#26375F'], pic:[1330,250,380,547,3,1]},
+];
+const stage = document.getElementById('stage'), slides = [...document.querySelectorAll('.slide')];
+const orb = document.getElementById('orb'), pic = document.getElementById('portrait');
+const footR = document.getElementById('footR'), prog = document.getElementById('prog');
+const N = slides.length, pad = n => String(n).padStart(2, '0');
+let cur = -1;
+
+function go(n) {
+  n = Math.max(0, Math.min(N - 1, n));
+  if (n === cur) return;
+  cur = n;
+  const s = S[n], [ol, ot, os, oc] = s.orb, [pl, pt, pw, ph, pr, pv] = s.pic;
+  slides.forEach((el, i) => { el.classList.toggle('on', i === n); el.setAttribute('aria-hidden', i !== n); });
+  document.body.style.setProperty('--bg', s.bg);
+  stage.classList.toggle('isdark', slides[n].classList.contains('dark'));
+  stage.classList.toggle('nofoot', n === 0 || n === N - 1);
+  Object.assign(orb.style, {left: ol + 'px', top: ot + 'px', width: os + 'px', height: os + 'px'});
+  orb.firstChild.style.backgroundColor = oc;
+  Object.assign(pic.style, {left: pl + 'px', top: pt + 'px', width: pw + 'px', height: ph + 'px', transform: `rotate(${pr}deg) scale(${pv ? 1 : .94})`, opacity: pv});
+  footR.textContent = pad(n + 1) + ' / ' + pad(N);
+  prog.style.width = ((n + 1) / N * 100) + '%';
+  history.replaceState(null, '', '#' + (n + 1));
+}
+
+function fit() {
+  const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+  stage.style.transform = `translate(-50%,-50%) scale(${k})`;
+}
+addEventListener('resize', fit); fit();
+
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+  else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
+  else if (e.key === 'Home') go(0);
+  else if (e.key === 'End') go(N - 1);
+  else if (e.key === 'f' || e.key === 'а') toggleFs();
+});
+document.addEventListener('click', e => {
+  if (e.target.closest('#fs')) return;
+  go(cur + (e.clientX < innerWidth / 3 ? -1 : 1));
+});
+let x0 = null;
+addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive: true});
+addEventListener('touchend', e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0; x0 = null;
+  if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); }
+});
+// касание без свайпа обрабатывает click выше
+
+function toggleFs() {
+  if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+  else document.exitFullscreen?.();
+}
+document.getElementById('fs').addEventListener('click', toggleFs);
+
+const start = parseInt(location.hash.slice(1), 10);
+// первый кадр без перелёта рисунка, потом включаем плавность
+pic.style.transition = orb.style.transition = 'none';
+go(Number.isFinite(start) ? start - 1 : 0);
+requestAnimationFrame(() => requestAnimationFrame(() => { pic.style.transition = orb.style.transition = ''; }));
+</script>
+</body>
+</html>
